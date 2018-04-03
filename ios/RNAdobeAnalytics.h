@@ -5,7 +5,7 @@
 #import <React/RCTBridgeModule.h>
 #endif
 
-@interface RNAdobeAdobeAnalytics : NSObject <RCTBridgeModule>
+@interface RNAdobeAnalytics : NSObject <RCTBridgeModule>
 
 @end
   

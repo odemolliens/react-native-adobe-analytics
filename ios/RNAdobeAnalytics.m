@@ -1,7 +1,7 @@
 
-#import "RNAdobeAdobeAnalytics.h"
+#import "RNAdobeAnalytics.h"
 
-@implementation RNAdobeAdobeAnalytics
+@implementation RNAdobeAnalytics
 
 - (dispatch_queue_t)methodQueue
 {

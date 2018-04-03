@@ -1,6 +1,6 @@
 
 import { NativeModules } from 'react-native';
 
-const { RNAdobeAdobeAnalytics } = NativeModules;
+const { RNAdobeAnalytics } = NativeModules;
 
-export default RNAdobeAdobeAnalytics;
+export default RNAdobeAnalytics;
