@@ -1,0 +1,28 @@
+// @flow
+
+/* eslint-disable no-unused-vars,  no-console , prettier/prettier */
+
+/**
+ * Subset of definition of methods of library chai
+ */
+module.exports.assert = {
+
+    isOk: (value: *, message?: string) => {},
+
+    ok: (value: *, message?: string) => {},
+
+    isNotOk: (value: *, message?: string) => {},
+
+    notOk: (value: *, message?: string) => {},
+
+    equal: (actual: *, expected: *, message?: string) => {},
+
+    notEqual: (actual: *, expected: *, message?: string) => {},
+
+    strictEqual: (actual: *, expected: *, message?: string) => {},
+
+    notStrictEqual: (actual: *, expected: *, message?: string) => {},
+
+    isAtLeast: (valueToCheck: number, valueToBeAtLeast: number, message?: string) => {}
+};
+
