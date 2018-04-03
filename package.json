@@ -16,7 +16,7 @@
   "author": "",
   "license": "",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": ">= 0.48.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -40,11 +40,10 @@
     "react-native-fabric": "^0.5.1",
     "react-test-renderer": "^16.0.0",
     "sinon": "^4.0.1"
-  }
-,
+  },
   "jest": {
     "setupFiles": [
-        "./config/jest.setup.js"
+      "./config/jest.setup.js"
     ],
     "verbose": true,
     "testPathIgnorePatterns": [

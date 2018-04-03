@@ -47,3 +47,6 @@ buck-out/
 # Flow-coverage
 #
 flow-coverage/
+sample/android/app/gradlew
+sample/android/app/gradlew.bat
+sample/android/app/gradle/wrapper/gradle-wrapper.jar
