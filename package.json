@@ -43,9 +43,12 @@
   }
 ,
   "jest": {
-  "setupFiles": [
-      "./config/jest.setup.js"
-  ],
-  "verbose": true
+    "setupFiles": [
+        "./config/jest.setup.js"
+    ],
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "/sample/"
+    ]
   }
 }
