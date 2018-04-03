@@ -11,6 +11,8 @@ import {
   Text,
   View
 } from 'react-native';
+import { sayHello } from 'react-native-adobe-analytics';
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -22,6 +24,7 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
+    sayHello('Imran');
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
