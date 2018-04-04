@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37CAB2C32074D13600A58822 /* AdobeMobileLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CAB2C22074D12E00A58822 /* AdobeMobileLibrary.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RNAdobeAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNAdobeAnalytics.m */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,12 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNAdobeAnalytics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNAdobeAnalytics.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		37CAB2BD2074D12E00A58822 /* AdobeMobileLibrary_Watch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary_Watch.a; sourceTree = "<group>"; };
+		37CAB2BE2074D12E00A58822 /* ADBMobile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADBMobile.h; sourceTree = "<group>"; };
+		37CAB2BF2074D12E00A58822 /* ADBMobileConfig.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ADBMobileConfig.json; sourceTree = "<group>"; };
+		37CAB2C02074D12E00A58822 /* AdobeMobileLibrary_Extension.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary_Extension.a; sourceTree = "<group>"; };
+		37CAB2C12074D12E00A58822 /* AdobeMobileLibrary_TV.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary_TV.a; sourceTree = "<group>"; };
+		37CAB2C22074D12E00A58822 /* AdobeMobileLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNAdobeAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAdobeAnalytics.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNAdobeAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAdobeAnalytics.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37CAB2C32074D13600A58822 /* AdobeMobileLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,9 +55,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		37CAB2BC2074D12E00A58822 /* AdobeMobileLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				37CAB2BD2074D12E00A58822 /* AdobeMobileLibrary_Watch.a */,
+				37CAB2BE2074D12E00A58822 /* ADBMobile.h */,
+				37CAB2BF2074D12E00A58822 /* ADBMobileConfig.json */,
+				37CAB2C02074D12E00A58822 /* AdobeMobileLibrary_Extension.a */,
+				37CAB2C12074D12E00A58822 /* AdobeMobileLibrary_TV.a */,
+				37CAB2C22074D12E00A58822 /* AdobeMobileLibrary.a */,
+			);
+			path = AdobeMobileLibrary;
+			sourceTree = "<group>";
+		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				37CAB2BC2074D12E00A58822 /* AdobeMobileLibrary */,
 				B3E7B5881CC2AC0600A0062D /* RNAdobeAnalytics.h */,
 				B3E7B5891CC2AC0600A0062D /* RNAdobeAnalytics.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
@@ -204,12 +226,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AdobeMobileLibrary",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNAdobeAnalytics;
 				SKIP_INSTALL = YES;
@@ -225,7 +250,10 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AdobeMobileLibrary",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNAdobeAnalytics;
 				SKIP_INSTALL = YES;
