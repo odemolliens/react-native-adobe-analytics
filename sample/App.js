@@ -12,12 +12,13 @@ import {
   View,
   Button
 } from 'react-native';
-import ApiService from 'react-native-adobe-analytics';
+// import Adobe from 'react-native-adobe-analytics';
+import Adobe from 'react-native-adobe-analytics';
 import { StackNavigator } from 'react-navigation';
 
 class HomeScreen extends React.Component {
   render() {
-    ApiService.init();
+    Adobe.init();
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
@@ -32,7 +33,7 @@ class HomeScreen extends React.Component {
 
 class DetailsScreen extends React.Component {
   render() {
-    ApiService.trackState('DetailsScreen', null);
+    Adobe.trackState('DetailsScreen', null);
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>

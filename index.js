@@ -1,13 +1,19 @@
 // @flow
-import { NativeModules } from 'react-native';
+import withTrackEvent from './src/components/HOC/event.hoc';
+import ScreenTrackingMiddleware from './src/middlewares/screen.middleware';
+import { getDisplayName, getScreenNameForTracking } from './src/utils/functions';
+import { EventParametersPropTypes } from './src/utils/definitions';
+import { EventDetailParameter } from './src/utils/definitions';
+import { ScreenUtils } from './src/middlewares/screen_utils.middleware';
+import Adobe from './src/adobe';
 
-const { RNAdobeAnalytics } = NativeModules;
-
-export default class ApiService {
-
-  static init = () =>
-    RNAdobeAnalytics.initAdobe();
-
-  static trackState = (viewName: string, data: { [string]: string | number | Array<string> }) =>
-    RNAdobeAnalytics.trackState(viewName, data);
-}
+export {
+  getDisplayName,
+  getScreenNameForTracking,
+  ScreenTrackingMiddleware,
+  Adobe,
+  withTrackEvent,
+  EventParametersPropTypes,
+  EventDetailParameter,
+  ScreenUtils
+};
