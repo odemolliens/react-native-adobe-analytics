@@ -12,8 +12,7 @@ import {
   View,
   Button
 } from 'react-native';
-// import Adobe from 'react-native-adobe-analytics';
-import Adobe from 'react-native-adobe-analytics';
+import { Adobe } from 'react-native-adobe-analytics';
 import { StackNavigator } from 'react-navigation';
 
 class HomeScreen extends React.Component {

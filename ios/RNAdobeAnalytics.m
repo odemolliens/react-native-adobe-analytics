@@ -12,9 +12,16 @@ RCT_EXPORT_METHOD(initAdobe)
     [ADBMobile collectLifecycleData];
 }
 
+// To track views
 RCT_EXPORT_METHOD(trackState:(NSString*)viewName data:(NSDictionary*)data)
 {
     [ADBMobile trackState:viewName data:data];
+}
+
+// To track events
+RCT_EXPORT_METHOD(trackAction:(NSString*)viewName data:(NSDictionary*)data)
+{
+    [ADBMobile trackAction:viewName data:data];
 }
 
 @end

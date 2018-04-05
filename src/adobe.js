@@ -10,13 +10,14 @@ export default class Adobe {
   static screenMappingFunc = undefined;
   static navigatorNames = ['nav'];
 
-  static init() {
-    return RNAdobeAnalytics.initAdobe();
-  }
+  static init = () =>
+    RNAdobeAnalytics.initAdobe();
 
-  static trackState(viewName: string, data: { [string]: string | number | Array<string> }) {
-    return RNAdobeAnalytics.trackState(viewName, data);
-  }
+  static trackState = (viewName: string, data: { [string]: string | number | Array<string> }) =>
+    RNAdobeAnalytics.trackState(viewName, data);
+
+  static trackEvent = (viewName: string, data: { [string]: string | number | Array<string> }) =>
+    RNAdobeAnalytics.trackAction(viewName, data);
   
   /**
   * Returns all possibles values for a given prop
