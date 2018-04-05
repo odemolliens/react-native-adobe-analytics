@@ -50,15 +50,5 @@ flow-coverage/
 sample/android/app/gradlew
 sample/android/app/gradlew.bat
 sample/android/app/gradle/wrapper/gradle-wrapper.jar
-sample/ios/AdobeMobileLibrary/ADBMobile.h
 sample/ios/AdobeMobileLibrary/ADBMobileConfig.json
-sample/ios/AdobeMobileLibrary/AdobeMobileLibrary.a
-sample/ios/AdobeMobileLibrary/AdobeMobileLibrary_Extension.a
-sample/ios/AdobeMobileLibrary/AdobeMobileLibrary_TV.a
-sample/ios/AdobeMobileLibrary/AdobeMobileLibrary_Watch.a
-ios/AdobeMobileLibrary/ADBMobile.h
 ios/AdobeMobileLibrary/ADBMobileConfig.json
-ios/AdobeMobileLibrary/AdobeMobileLibrary.a
-ios/AdobeMobileLibrary/AdobeMobileLibrary_Extension.a
-ios/AdobeMobileLibrary/AdobeMobileLibrary_TV.a
-ios/AdobeMobileLibrary/AdobeMobileLibrary_Watch.a
