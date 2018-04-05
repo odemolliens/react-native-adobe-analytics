@@ -35,5 +35,6 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+    implementation files('/lib/adobeMobileLibrary-4.15.0.jar')
 }
   
