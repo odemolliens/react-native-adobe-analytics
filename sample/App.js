@@ -15,7 +15,20 @@ import {
 import { Adobe } from 'react-native-adobe-analytics';
 import { StackNavigator } from 'react-navigation';
 
+const additionalData = {
+  'screen.category.l1': 'myproximus',
+  'screen.category.l2': 'mybill',
+  'screen.category.l3': 'landing',
+  'app.language': 'nl',
+  'app.name': 'myproximus',
+  'app.version': '1.1.3',
+  'user.customer_id': '67786786',
+  'user.gid': '123456778',
+  'user.segment': 'res',
+};
+
 class HomeScreen extends React.Component {
+  
   render() {
     Adobe.init();
     return (
@@ -32,7 +45,7 @@ class HomeScreen extends React.Component {
 
 class DetailsScreen extends React.Component {
   render() {
-    Adobe.trackState('DetailsScreen', null);
+    Adobe.trackState('DetailsScreen', additionalData);
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>
