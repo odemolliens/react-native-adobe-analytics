@@ -3,7 +3,7 @@
 
 ## Getting started
 
-`$ npm install react-native-adobe-analytics --save`
+`$ npm install odemolliens/react-native-adobe-analytics --save`
 
 ### Mostly automatic installation
 
@@ -14,10 +14,12 @@
 
 #### iOS
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-adobe-analytics` and add `RNAdobeAnalytics.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNAdobeAnalytics.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`. Check only `Copy items if needed`.
+2. In XCode, in the project navigator, select your project. Add `libRNAdobeAnalytics.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+3. In XCode, in the project navigator, select your project. Add `libsqlite3.0.tbd` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+4. In XCode, in the project navigator, select your project. Add `SystemConfiguration.framework` to your project's `Build Phases` ➜ `Link Binary With Libraries`
+5. In XCode, in the project navigator, select `Libraries` ➜ `RNAdobeAnalytics.xcodeproj` ➜ `AdobeMobileLibrary`, drag and drop your json config file `ADBMobileConfig.json` and check only `Copy items if needed`.
+6. Run your project (`Cmd+R`)<
 
 #### Android
 
@@ -33,15 +35,69 @@
   	```
       compile project(':react-native-adobe-analytics')
   	```
-
+4. Open (or create it if it's not the case) `node_modules/react-native-adobe-analytics/android/app/src/main/res/raw` and add your json config file `adbmobileconfig.json` (file's name need to contain only lowercase)
 
 ## Usage
-```javascript
-import RNAdobeAnalytics from 'react-native-adobe-analytics';
+  	```js
+  	import { Adobe } from 'react-native-adobe-analytics';
+  	```
 
-// TODO: What to do with the module?
-RNAdobeAnalytics;
-```
+
+#### Setup
+
+Adobe Analysis must be initialized as soon as the mobile application has started:
+
+  	```js
+  	import { Adobe } from 'react-native-adobe-analytics';
+
+  	export default class App {
+  	  constructor() {
+  	    super()
+  	    Adobe.init();
+  	  }
+  	}
+  	```
+
+#### Import
+
+In any js file, you can start to use this plugin by adding:
+
+  	```js
+  	import { Adobe } from 'react-native-adobe-analytics';
+  	```
+
+#### Track Event
+
+In any js file, you can track events by using:
+
+  	```js
+  	  Adobe.trackEvent('my_event', null);
+  	```
+
+Can be used with extra parameters:
+
+  	```js
+  	  const extraParameters = { 'screen.category.l1': 'cat1', 'screen.category.l2': 'cat2', 'screen.category.l3': 'cat3', 'screen.category.l4': 'cat4' };
+  	  Adobe.trackEvent('my_event',extraParameters);
+  	```
+
+
+#### Track View
+
+In any js file, you can track views by using:
+
+  	```js
+  	  Adobe.trackState('my_view_name',null);
+
+  	```
+
+Can be used with extra parameters:
+
+  	```js
+  	  const extraParameters = { 'screen.category.l1': 'cat1', 'screen.category.l2': 'cat2', 'screen.category.l3': 'cat3', 'screen.category.l4': 'cat4' };
+  	  Adobe.trackState("my_view_name", extraParameters);
+  	```
+
   # Build Status
 ### Changelog
 
