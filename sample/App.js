@@ -35,7 +35,7 @@ class HomeScreen extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
         <Button
-          title="Go to Details"
+          title="Send event"
           onPress={() => this.props.navigation.navigate('Details')}
         />
       </View>
@@ -48,7 +48,8 @@ class DetailsScreen extends React.Component {
     Adobe.trackState('DetailsScreen', additionalData);
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
+        <Text>Second Screen</Text>
+        <Text>Press back button to send an event again</Text>
       </View>
     );
   }
