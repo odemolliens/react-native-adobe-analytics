@@ -18,7 +18,7 @@
 2. In XCode, in the project navigator, select your project. Add `libRNAdobeAnalytics.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 3. In XCode, in the project navigator, select your project. Add `libsqlite3.0.tbd` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. In XCode, in the project navigator, select your project. Add `SystemConfiguration.framework` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-5. In XCode, in the project navigator, select `Libraries` ➜ `RNAdobeAnalytics.xcodeproj` ➜ `AdobeMobileLibrary`, drag and drop your json config file `ADBMobileConfig.json` and check only `Copy items if needed`.
+5. In XCode, in the project navigator, select your project. Drag and drop your json config file `ADBMobileConfig.json` and check only `Copy items if needed`.
 6. Run your project (`Cmd+R`)<
 
 #### Android
@@ -35,7 +35,7 @@
   	```
       compile project(':react-native-adobe-analytics')
   	```
-4. Open (or create it if it's not the case) `node_modules/react-native-adobe-analytics/android/app/src/main/res/raw` and add your json config file `adbmobileconfig.json` (file's name need to contain only lowercase)
+4. Open (or create it if it's not the case) `YOUR_APP/app/src/main/res/raw` and add your json config file `adbmobileconfig.json` (file's name need to contain only lowercase)
 
 ## Usage
   	```js
@@ -53,7 +53,9 @@ Adobe Analysis must be initialized as soon as the mobile application has started
   	export default class App {
   	  constructor() {
   	    super()
-  	    Adobe.init();
+          // If you know it, add your packageName. Otherwise enter a blank string ''.
+          var packageName : string = 'com.sample'
+  	    Adobe.init(packageName);
   	  }
   	}
   	```
