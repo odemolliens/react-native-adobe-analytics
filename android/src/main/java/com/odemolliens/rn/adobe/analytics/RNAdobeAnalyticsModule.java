@@ -1,6 +1,9 @@
 
 package com.odemolliens.rn.adobe.analytics;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.adobe.mobile.Analytics;
 import com.adobe.mobile.Config;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -32,8 +35,16 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
 
   @SuppressWarnings("unused")
   @ReactMethod
-  public void initAdobe() {
-    InputStream configInput = this.reactContext.getResources().openRawResource(R.raw.adbmobileconfig);
+  public void initAdobe(String packageName) {
+    String defPackage = (packageName != null && !packageName.isEmpty()) ? packageName :
+            (getCurrentActivity() != null ? getCurrentActivity().getPackageName() : "");
+    int configID = this.reactContext.getResources().getIdentifier("adbmobileconfig", "raw", defPackage);
+    if (configID == 0) {
+      Toast.makeText(this.reactContext, "Error when we tried to set Adobe, please Retry", Toast.LENGTH_SHORT).show();
+      Log.e("RNAdobeAnalyticsModule", "ERROR : Please verify your application's package name");
+      return;
+    }
+    InputStream configInput = this.reactContext.getResources().openRawResource(configID);
     Config.overrideConfigStream(configInput);
   }
 

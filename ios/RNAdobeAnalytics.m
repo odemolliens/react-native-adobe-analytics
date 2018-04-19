@@ -5,9 +5,9 @@
 
 @implementation RNAdobeAnalytics RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(initAdobe)
+RCT_EXPORT_METHOD(initAdobe:(NSString*)packageName)
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ADBMobile" ofType:@"json"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ADBMobileConfig" ofType:@"json"];
     [ADBMobile overrideConfigPath:filePath];
     [ADBMobile collectLifecycleData];
 }

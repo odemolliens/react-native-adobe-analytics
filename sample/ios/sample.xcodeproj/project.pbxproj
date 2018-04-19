@@ -36,6 +36,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* sampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* sampleTests.m */; };
 		3769EB0E2087861D0092B921 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3769EAE62087861D0092B921 /* Crashlytics.framework */; };
 		3769EB0F2087861D0092B921 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3769EB0D2087861D0092B921 /* Fabric.framework */; };
+		3769EBB22088B71C0092B921 /* ADBMobileConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 3769EB8B2088B71C0092B921 /* ADBMobileConfig.json */; };
 		37CAB2522073A80500A58822 /* libRNAdobeAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CAB2512073A7EA00A58822 /* libRNAdobeAnalytics.a */; };
 		37CAB28F2073CA3A00A58822 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CAB28E2073CA3A00A58822 /* SystemConfiguration.framework */; };
 		37CAB2912073CA4200A58822 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CAB2902073CA4200A58822 /* libsqlite3.0.tbd */; };
@@ -352,6 +353,7 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3769EAE62087861D0092B921 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		3769EB0D2087861D0092B921 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		3769EB8B2088B71C0092B921 /* ADBMobileConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ADBMobileConfig.json; sourceTree = "<group>"; };
 		37CAB2272073A7EA00A58822 /* RNAdobeAnalytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNAdobeAnalytics.xcodeproj; path = ../../ios/RNAdobeAnalytics.xcodeproj; sourceTree = "<group>"; };
 		37CAB28E2073CA3A00A58822 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		37CAB2902073CA4200A58822 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -604,6 +606,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				3769EB8B2088B71C0092B921 /* ADBMobileConfig.json */,
 				3769EAE62087861D0092B921 /* Crashlytics.framework */,
 				3769EB0D2087861D0092B921 /* Fabric.framework */,
 				13B07FAE1A68108700A75B9A /* sample */,
@@ -1101,6 +1104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				3769EBB22088B71C0092B921 /* ADBMobileConfig.json in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

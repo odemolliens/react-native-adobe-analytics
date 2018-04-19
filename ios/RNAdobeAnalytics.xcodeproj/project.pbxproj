@@ -27,7 +27,6 @@
 		134814201AA4EA6300B7C361 /* libRNAdobeAnalytics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNAdobeAnalytics.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		37CAB2BD2074D12E00A58822 /* AdobeMobileLibrary_Watch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary_Watch.a; sourceTree = "<group>"; };
 		37CAB2BE2074D12E00A58822 /* ADBMobile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADBMobile.h; sourceTree = "<group>"; };
-		37CAB2BF2074D12E00A58822 /* ADBMobileConfig.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ADBMobileConfig.json; sourceTree = "<group>"; };
 		37CAB2C02074D12E00A58822 /* AdobeMobileLibrary_Extension.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary_Extension.a; sourceTree = "<group>"; };
 		37CAB2C12074D12E00A58822 /* AdobeMobileLibrary_TV.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary_TV.a; sourceTree = "<group>"; };
 		37CAB2C22074D12E00A58822 /* AdobeMobileLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AdobeMobileLibrary.a; sourceTree = "<group>"; };
@@ -60,7 +59,6 @@
 			children = (
 				37CAB2BD2074D12E00A58822 /* AdobeMobileLibrary_Watch.a */,
 				37CAB2BE2074D12E00A58822 /* ADBMobile.h */,
-				37CAB2BF2074D12E00A58822 /* ADBMobileConfig.json */,
 				37CAB2C02074D12E00A58822 /* AdobeMobileLibrary_Extension.a */,
 				37CAB2C12074D12E00A58822 /* AdobeMobileLibrary_TV.a */,
 				37CAB2C22074D12E00A58822 /* AdobeMobileLibrary.a */,
