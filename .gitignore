@@ -52,3 +52,5 @@ sample/android/app/gradlew.bat
 sample/android/app/gradle/wrapper/gradle-wrapper.jar
 sample/ios/AdobeMobileLibrary/ADBMobileConfig.json
 ios/AdobeMobileLibrary/ADBMobileConfig.json
+sample/android/app/release/app-release.apk
+sample/android/app/release/output.json
