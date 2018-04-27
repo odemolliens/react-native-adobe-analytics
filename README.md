@@ -53,9 +53,10 @@ Adobe Analysis must be initialized as soon as the mobile application has started
   	export default class App {
   	  constructor() {
   	    super()
-          // If you know it, add your packageName. Otherwise enter a blank string ''.
-          var packageName : string = 'com.sample'
-  	    Adobe.init(packageName);
+				// If you know it, add your packageName. Otherwise enter a blank string ''.
+				var packageName : string = 'com.sample'
+				var showAdobeLog = false;
+				Adobe.init(packageName, showAdobeLog);
   	  }
   	}
   	```
