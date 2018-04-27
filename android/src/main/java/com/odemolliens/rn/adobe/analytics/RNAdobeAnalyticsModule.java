@@ -36,8 +36,7 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
 
   @SuppressWarnings("unused")
   @ReactMethod
-  public void initAdobe(String packageName, Boolean showDebugLogging) {
-    Config.setDebugLogging(showDebugLogging);
+  public void initAdobe(String packageName) {
     String defPackage = (packageName != null && !packageName.isEmpty()) ? packageName :
             (getCurrentActivity() != null ? getCurrentActivity().getPackageName() : "");
     int configID = this.reactContext.getResources().getIdentifier("adbmobileconfig", "raw", defPackage);

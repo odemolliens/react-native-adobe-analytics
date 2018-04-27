@@ -30,7 +30,7 @@ const additionalData = {
 class HomeScreen extends React.Component {
   
   render() {
-    Adobe.init('com.sample', true);
+    Adobe.init('com.sample');
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>

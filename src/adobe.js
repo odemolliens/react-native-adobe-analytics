@@ -7,8 +7,8 @@ export default class Adobe {
   /**
   * Init RNAdobe module. To be called BEFORE 'trackState' or 'trackEvent' methods
   */
-  static init = (packageName, showLog) =>
-    RNAdobeAnalytics.initAdobe(packageName, showLog);
+  static init = (packageName) =>
+    RNAdobeAnalytics.initAdobe(packageName);
 
   /**
   * Track view.
