@@ -5,11 +5,22 @@
 
 @implementation RNAdobeAnalytics RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(initAdobe:(NSString*)packageName)
+RCT_EXPORT_METHOD(initAdobe:(NSString*)packageName withResolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
 {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ADBMobileConfig" ofType:@"json"];
-    [ADBMobile overrideConfigPath:filePath];
-    [ADBMobile collectLifecycleData];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
+        [ADBMobile overrideConfigPath:filePath];
+        [ADBMobile collectLifecycleData];
+        resolve(@"success");
+    }
+    else
+    {
+        NSError* error = [[NSError alloc]initWithDomain:@"react-native-adobe-analytics" code:-1001 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"message",@"File not found", nil]];
+        
+        reject(@"-1001", @"File not found", error);
+    }
 }
 
 // To track views
