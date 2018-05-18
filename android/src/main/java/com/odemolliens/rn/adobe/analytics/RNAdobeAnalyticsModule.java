@@ -19,6 +19,7 @@ import java.util.HashMap;
 public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
+  private static Boolean isInitialized = false;
 
   public RNAdobeAnalyticsModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -44,73 +45,88 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
             (getCurrentActivity() != null ? getCurrentActivity().getPackageName() : "");
     int configID = this.reactContext.getResources().getIdentifier("adbmobileconfig", "raw", defPackage);
     if (configID == 0) {
-      Toast.makeText(this.reactContext, "Error when we tried to set Adobe, please Retry", Toast.LENGTH_SHORT).show();
-      Log.e("RNAdobeAnalyticsModule", "ERROR : Please verify your application's package name");
+      Log.e("RNAdobeAnalyticsModule", "Adobe Error: Setup file not found");
+      this.isInitialized = false;
       resolve.reject("-1001", "Error when we tried to set Adobe, please Retry");
       return;
     }
     InputStream configInput = this.reactContext.getResources().openRawResource(configID);
     Config.overrideConfigStream(configInput);
+    this.isInitialized = true;
     resolve.resolve("Success");
   }
 
   // To track views
   @SuppressWarnings("unused")
   @ReactMethod
-  public void trackState(String viewName, ReadableMap data) {
-    HashMap<String, Object> mapData = new HashMap<>();
-    ReadableMapKeySetIterator iterator = data.keySetIterator();
+  public void trackState(String viewName, ReadableMap data, Promise resolve) {
+    if (isInitialized) {
+      HashMap<String, Object> mapData = new HashMap<>();
+      if (data != null) {
+        ReadableMapKeySetIterator iterator = data.keySetIterator();
 
-    while (iterator.hasNextKey()) {
-      String key = iterator.nextKey();
-      ReadableType type = data.getType(key);
+        while (iterator.hasNextKey()) {
+          String key = iterator.nextKey();
+          ReadableType type = data.getType(key);
 
-      switch (type) {
-        case Null:
-          mapData.put(key, null);
-          break;
-        case Boolean:
-          mapData.put(key, data.getBoolean(key));
-          break;
-        case Number:
-          mapData.put(key, data.getDouble(key));
-          break;
-        case String:
-          mapData.put(key, data.getString(key));
-          break;
+          switch (type) {
+            case Null:
+              mapData.put(key, null);
+              break;
+            case Boolean:
+              mapData.put(key, data.getBoolean(key));
+              break;
+            case Number:
+              mapData.put(key, data.getDouble(key));
+              break;
+            case String:
+              mapData.put(key, data.getString(key));
+              break;
+          }
+        }
       }
-    }
 
-    Analytics.trackState(viewName, mapData);
+      Analytics.trackState(viewName, mapData);
+      resolve.resolve("Success");
+    } else {
+      resolve.reject("-1002", "Error : Adobe is not initialized");
+    }
   }
 
   // To track events
   @SuppressWarnings("unused")
   @ReactMethod
-  public void trackAction(String viewName, ReadableMap data) {
-    HashMap<String, Object> mapData = new HashMap<>();
-    ReadableMapKeySetIterator iterator = data.keySetIterator();
+  public void trackAction(String viewName, ReadableMap data, Promise resolve) {
+    if (isInitialized) {
+      HashMap<String, Object> mapData = new HashMap<>();
+      if (data != null) {
+        ReadableMapKeySetIterator iterator = data.keySetIterator();
 
-    while (iterator.hasNextKey()) {
-      String key = iterator.nextKey();
-      ReadableType type = data.getType(key);
+        while (iterator.hasNextKey()) {
+          String key = iterator.nextKey();
+          ReadableType type = data.getType(key);
 
-      switch (type) {
-        case Null:
-          mapData.put(key, null);
-          break;
-        case Boolean:
-          mapData.put(key, data.getBoolean(key));
-          break;
-        case Number:
-          mapData.put(key, data.getDouble(key));
-          break;
-        case String:
-          mapData.put(key, data.getString(key));
-          break;
+          switch (type) {
+            case Null:
+              mapData.put(key, null);
+              break;
+            case Boolean:
+              mapData.put(key, data.getBoolean(key));
+              break;
+            case Number:
+              mapData.put(key, data.getDouble(key));
+              break;
+            case String:
+              mapData.put(key, data.getString(key));
+              break;
+          }
+        }
       }
-    }
 
-    Analytics.trackAction(viewName, mapData);
+      Analytics.trackAction(viewName, mapData);
+      resolve.resolve("Success");
+    } else {
+      resolve.reject("-1002", "Error : Adobe is not initialized");
+    }
   }
 }
