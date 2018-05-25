@@ -107,5 +107,8 @@ Can be used with extra parameters:
  - Library created
 
 ### Version 1.0.1
- - Can change adobe's config file by environment
+ - Can change adobe's config file by environment on ios
+
+### Version 1.0.1
+ - Can change adobe's config file by environment on android
 
