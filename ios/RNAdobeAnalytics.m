@@ -10,7 +10,13 @@ BOOL *isInitialized = false;
 RCT_EXPORT_METHOD(initAdobe:(NSString*)packageName withResolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ADBMobileConfig" ofType:@"json"];
+    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
+    NSString *filePath;
+    if ([processInfo.environment[@"env"]  isEqual: @"store"]) {
+        filePath = [[NSBundle mainBundle] pathForResource:@"ADBMobileConfig-prod" ofType:@"json"];
+    } else {
+        filePath = [[NSBundle mainBundle] pathForResource:@"ADBMobileConfig" ofType:@"json"];
+    }
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
     {
         [ADBMobile overrideConfigPath:filePath];

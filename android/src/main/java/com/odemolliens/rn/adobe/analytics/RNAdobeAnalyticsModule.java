@@ -43,7 +43,12 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
   public void initAdobe(String packageName, Promise resolve) {
     String defPackage = (packageName != null && !packageName.isEmpty()) ? packageName :
             (getCurrentActivity() != null ? getCurrentActivity().getPackageName() : "");
-    int configID = this.reactContext.getResources().getIdentifier("adbmobileconfig", "raw", defPackage);
+    int configID;
+    if (defPackage != null && defPackage.contains("store")) {
+      configID = this.reactContext.getResources().getIdentifier("adbmobileconfigprod", "raw", defPackage);
+    } else {
+      configID = this.reactContext.getResources().getIdentifier("adbmobileconfig", "raw", defPackage);
+    }
     if (configID == 0) {
       Log.e("RNAdobeAnalyticsModule", "Adobe Error: Setup file not found");
       this.isInitialized = false;

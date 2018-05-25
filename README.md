@@ -106,3 +106,6 @@ Can be used with extra parameters:
 ### Version 1.0.0
  - Library created
 
+### Version 1.0.1
+ - Can change adobe's config file by environment
+

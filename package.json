@@ -1,14 +1,19 @@
 {
   "name": "react-native-adobe-analytics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "lint": "eslint **/*.js",
-    "flow-coverage": "flow-coverage-report -i 'src/**/*.js' -i 'src/**/*.jsx' -x 'src/test/**' -t html -t json -t text",
+    "test": "jest --coverage",
+    "testw": "jest --watch",
+    "lint": "eslint src/**/*.js",
+    "flow-coverage": "flow-coverage-report -i 'src/**/*.js' -x 'src/__tests__/**' -t html -t json -t text --threshold 60 || exit 1",
     "flow:start": "flow",
-    "flow:stop": "flow stop"
+    "flow:stop": "flow stop",
+    "build": "npm run build:clean && npm run build:npm && npm run build:npm-flow",
+    "build:clean": "rm -rf ./lib",
+    "build:npm": "babel src --optional runtime --ignore __tests__ --out-dir lib/",
+    "build:npm-flow": "find ./src -name '*.js' -not -path '*/__tests__*' | while read filepath; do cp $filepath `echo $filepath | sed 's/\\/src\\//\\/lib\\//g'`.flow; done"
   },
   "keywords": [
     "react-native"
