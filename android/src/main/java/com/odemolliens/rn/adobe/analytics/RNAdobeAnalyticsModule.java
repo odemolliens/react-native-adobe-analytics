@@ -1,6 +1,7 @@
 
 package com.odemolliens.rn.adobe.analytics;
 
+import android.app.Activity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -25,6 +26,14 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
     super(reactContext);
     this.reactContext = reactContext;
     Config.setContext(this.reactContext);
+  }
+
+  public static void collectLifecycleData(Activity activity){
+    Config.collectLifecycleData(activity);
+  }
+
+  public static void pauseCollectingLifecycleData(){
+    Config.pauseCollectingLifecycleData();
   }
 
   @Override
