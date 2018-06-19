@@ -18,6 +18,11 @@ import com.facebook.react.bridge.ReadableType;
 
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
+
+import static com.adobe.mobile.Config.MobileDataEvent.MOBILE_EVENT_ACQUISITION_INSTALL;
+import static com.adobe.mobile.Config.MobileDataEvent.MOBILE_EVENT_ACQUISITION_LAUNCH;
+import static com.adobe.mobile.Config.MobileDataEvent.MOBILE_EVENT_LIFECYCLE;
 
 public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
 
@@ -25,11 +30,40 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
     private static Boolean isInitialized = false;
     private final Activity activity = getCurrentActivity();
 
-    public RNAdobeAnalyticsModule(ReactApplicationContext reactContext) {
+    public RNAdobeAnalyticsModule(ReactApplicationContext reactContext, boolean debugMode) {
         super(reactContext);
         this.reactContext = reactContext;
         Config.setContext(this.reactContext);
+
         reactContext.addLifecycleEventListener(mLifecycleEventListener);
+
+        if (debugMode) {
+            Config.setDebugLogging(true);
+            Config.registerAdobeDataCallback(new Config.AdobeDataCallback() {
+
+                @Override
+                public void call(Config.MobileDataEvent mobileDataEvent, Map<String, Object> map) {
+
+                    String keys = map.toString();
+
+                    switch (mobileDataEvent) {
+                        case MOBILE_EVENT_LIFECYCLE:
+                            /* this event will fire when the Adobe sdk finishes processing lifecycle information */
+                            Log.e("AdobeSDK", "this event will fire when the Adobe sdk finishes processing lifecycle information:" + keys);
+                            break;
+                        case MOBILE_EVENT_ACQUISITION_INSTALL:
+                            /* this event will fire on the first launch of the application after install when installed via an Adobe acquisition link */
+                            Log.e("AdobeSDK", "event will fire on the first launch of the application after install:" + keys);
+                            break;
+                        case MOBILE_EVENT_ACQUISITION_LAUNCH:
+                            /* this event will fire on the subsequent launches after the application was installed via an Adobe acquisition link */
+                            Log.e("AdobeSDK", " fire on the subsequent launches after the application was installed: " + keys);
+                            break;
+                    }
+                }
+            });
+        }
+
     }
 
     private final LifecycleEventListener mLifecycleEventListener = new LifecycleEventListener() {
