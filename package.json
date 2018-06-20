@@ -1,6 +1,6 @@
 {
-  "name": "@proximus/react-native-adobe-analytics",
-  "version": "1.1.1",
+  "name": "react-native-adobe-analytics",
+  "version": "1.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {

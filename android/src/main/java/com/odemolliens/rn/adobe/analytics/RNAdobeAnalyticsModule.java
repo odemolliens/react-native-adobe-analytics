@@ -102,9 +102,6 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void initAdobe(String tokenPath, Promise resolve) {
 
-        Log.e("RNAdobeAnalyticsModule", "Package:" + this.reactContext.getPackageName());
-        Log.e("RNAdobeAnalyticsModule", "TokenPath:" + tokenPath);
-
         boolean resultSetup = setupConfig(tokenPath);
 
         if (resultSetup) {
@@ -126,9 +123,6 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
         }
 
         int configID = this.reactContext.getResources().getIdentifier(tokenpath, "raw", this.reactContext.getPackageName());
-
-        Log.e("RNAdobeAnalyticsModule", "configID:" + configID);
-
 
         if (configID == 0) {
             Log.e("RNAdobeAnalyticsModule", "Adobe Error: Setup file not found");
