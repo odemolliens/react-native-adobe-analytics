@@ -35,6 +35,10 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
         this.reactContext = reactContext;
         Config.setContext(this.reactContext);
 
+        //Try to setup with default file
+        setupConfig("adbmobileconfig");
+
+
         reactContext.addLifecycleEventListener(mLifecycleEventListener);
 
         if (debugMode) {
@@ -91,25 +95,51 @@ public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
     @SuppressWarnings("unused")
     @ReactMethod
     public void initAdobe(Promise resolve) {
-        initAdobe(null, resolve);
+        initAdobe("adbmobileconfig", resolve);
     }
 
     @SuppressWarnings("unused")
     @ReactMethod
     public void initAdobe(String tokenPath, Promise resolve) {
 
-        int configID = this.reactContext.getResources().getIdentifier(tokenPath, "raw", this.reactContext.getPackageName());
+        Log.e("RNAdobeAnalyticsModule", "Package:" + this.reactContext.getPackageName());
+        Log.e("RNAdobeAnalyticsModule", "TokenPath:" + tokenPath);
+
+        boolean resultSetup = setupConfig(tokenPath);
+
+        if (resultSetup) {
+            resolve.resolve("Success");
+        } else {
+            resolve.reject("-1001", "Error when we tried to set Adobe, please Retry");
+        }
+
+    }
+
+    private boolean setupConfig(String tokenpath) {
+
+        if (this.isInitialized) {
+            return true;
+        }
+
+        if (tokenpath == null || tokenpath.isEmpty()) {
+            return false;
+        }
+
+        int configID = this.reactContext.getResources().getIdentifier(tokenpath, "raw", this.reactContext.getPackageName());
+
+        Log.e("RNAdobeAnalyticsModule", "configID:" + configID);
+
 
         if (configID == 0) {
             Log.e("RNAdobeAnalyticsModule", "Adobe Error: Setup file not found");
             this.isInitialized = false;
-            resolve.reject("-1001", "Error when we tried to set Adobe, please Retry");
-            return;
+            return false;
         }
         InputStream configInput = this.reactContext.getResources().openRawResource(configID);
         Config.overrideConfigStream(configInput);
         this.isInitialized = true;
-        resolve.resolve("Success");
+        return false;
+
     }
 
     // To track views
