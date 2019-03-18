@@ -20,10 +20,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.adobe.mobile.Config.MobileDataEvent.MOBILE_EVENT_ACQUISITION_INSTALL;
-import static com.adobe.mobile.Config.MobileDataEvent.MOBILE_EVENT_ACQUISITION_LAUNCH;
-import static com.adobe.mobile.Config.MobileDataEvent.MOBILE_EVENT_LIFECYCLE;
-
 public class RNAdobeAnalyticsModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
