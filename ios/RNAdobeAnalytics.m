@@ -5,7 +5,7 @@
 
 @implementation RNAdobeAnalytics RCT_EXPORT_MODULE();
 
-BOOL *isInitialized = false;
+BOOL isInitialized = false;
 
 RCT_EXPORT_METHOD(initAdobe:(NSString*)tokenPath withResolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)

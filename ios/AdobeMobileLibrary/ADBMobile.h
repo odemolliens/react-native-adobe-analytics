@@ -4,7 +4,7 @@
 //
 //  Copyright 1996-2018. Adobe, Inc. All Rights Reserved
 //
-//  SDK Version: 4.15.0
+//  SDK Version: 4.18.0
 
 #import <Foundation/Foundation.h>
 @class CLLocation, CLBeacon, TVApplicationController,
@@ -210,6 +210,12 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  */
 + (void) registerAdobeDataCallback:(nullable void (^)(ADBMobileDataEvent event, NSDictionary* __nullable adobeData))callback;
 
+/**
+ * @brief Registers a callback to allow for the modification of NSURLSessionConfiguration used by all SDK network methods.
+ * @note Warning: incorrect usage of this method may interrupt the SDK's ability to transmit data.
+ * @param callback a block pointer to call any time a new NSURLSession is being created for internal usage.  configuration(NSURLSessionConfiguration) is a pointer to the configuration that will be used.
+ */
++ (void) registerURLSessionConfigurationCallback: (nullable void (^)(NSURLSessionConfiguration* __nonnull configuration))callback;
 
 #pragma mark - Analytics
 
@@ -311,6 +317,10 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
 
 /**
  * 	@brief Tracks the end of a timed event
+ *
+ *  Valid values for inAppDuration and totalDuration are non-negative and fewer than the number of seconds in a year.
+ *  If the value returned is negative, it is considered corrupt and will be ignored.
+ *
  *  @param action a required NSString pointer that denotes the action name to finish tracking.
  * 	@param block optional block to perform logic and update parameters when this timed event ends, this block can cancel the sending of the hit by returning NO.
  *  @note This method will send a tracking hit if the parameter logic is nil or returns YES.
@@ -490,6 +500,25 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  */
 + (void) targetLoadRequests:(nonnull NSArray *)requests
       withProfileParameters:(nullable NSDictionary *)profileParameters;
+
+/**
+ * @brief Sends a click notification to Target if a click metric is defined for the provided location name.
+ *
+ * Click notification can be sent for a location provided a load request has been executed for that prefetched or regular mbox
+ * location before, indicating that the mbox was viewed. This request helps Target record the clicked event for the given location or mbox.
+ *
+ * @param name NSString value representing the name for location/mbox
+ * @param mboxParameters a dictionary of key-value pairs representing mbox parameters for this request
+ * @param productParameters a dictionary of key-value pairs representing product parameters for this request
+ * @param orderParameters a dictionary of key-value pairs representing order parameters for this request
+ * @param profileParameters a dictionary of key-value pairs representing profile parameters for this request
+ *
+ */
++ (void)locationClickedWithName:(nonnull NSString *)name
+                 mboxParameters: (nullable NSDictionary *) mboxParameters
+              productParameters: (nullable NSDictionary *) productParameters
+                orderParameters: (nullable NSDictionary *) orderParameters
+              profileParameters:(nullable NSDictionary *)profileParameters;
 
 /**
  *  @brief Clears data cached by Target Prefetch
@@ -682,6 +711,15 @@ FOUNDATION_EXPORT NSString *const __nonnull ADBConfigKeyCallbackDeepLink;
  *	@note This method can cause a blocking network call.  Blocking time is limited to 100ms, but care should still be taken to not call this on time-sensitive threads.
  */
 + (nullable NSURL *) visitorAppendToURL: (nullable NSURL *) url;
+
+/**
+ *  @brief Gets Visitor ID Service identifiers in URL query string form for consumption in hybrid mobile apps.
+ *         There will be no leading '&' or '?' punctuation, as the caller is responsible for placing the string in the correct location
+ *         of their resulting URL.
+ *         If there is not a valid URL string to return, or if an error occurs, callback will contain nil.
+ *  @param callback a block pointer to call with an NSString value containing the visitor identifiers as a query string upon completion of the service request
+ */
++ (void) visitorGetUrlVariablesAsync:(nullable void (^)(NSString* __nullable urlVariables))callback;
 
 #pragma mark - PII collection
 
