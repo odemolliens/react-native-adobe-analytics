@@ -109,6 +109,9 @@ Can be used with extra parameters:
 ### Version 1.0.1
  - Can change adobe's config file by environment on ios
 
-### Version 1.0.1
+### Version 1.0.2
  - Can change adobe's config file by environment on android
+
+### Version 1.1.4
+ - Update Adobe SDK (current version: v4.17.12 (Android) & v4.18.0 (iOS))
 
