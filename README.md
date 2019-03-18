@@ -112,6 +112,11 @@ Can be used with extra parameters:
 ### Version 1.0.2
  - Can change adobe's config file by environment on android
 
+### Version 1.1.1
+ - Allow debugging on Android
+
+### Version 1.1.2
+ - Fix Android Lifecycle
+
 ### Version 1.1.4
  - Update Adobe SDK (current version: v4.17.12 (Android) & v4.18.0 (iOS))
-
