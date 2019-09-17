@@ -119,4 +119,7 @@ Can be used with extra parameters:
  - Fix Android Lifecycle
 
 ### Version 1.1.4
- - Update Adobe SDK (current version: v4.17.12 (Android) & v4.18.0 (iOS))
+ - Update Adobe SDK (current version: v4.17.12 (Android) & v4.16.1 (iOS))
+
+ ### Version 1.1.5
+ - Update Adobe SDK (current version: v4.17.12 (Android) & v4.18.7 (iOS))
