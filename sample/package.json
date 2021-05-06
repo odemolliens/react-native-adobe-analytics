@@ -9,7 +9,7 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.21",
     "react": "^16.3.0-alpha.1",
     "react-native": "0.54.4",
     "react-native-adobe-analytics": "github:odemolliens/react-native-adobe-analytics",
